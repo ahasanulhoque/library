@@ -20,27 +20,30 @@ function addBookToLibrary(book){
 }
 
 //Show a book on the page
-function render(book){
-    //Create new elements for each bit of book data
-    const newBook = document.createElement('div');
-    const title = document.createElement('h2');
-    const author = document.createElement('p');
-    const pages = document.createElement('p');
-    const read = document.createElement('p');
+//Rewrite render() to loop through array
+function render(library){
+    library.forEach((book) => {
+        //Create new elements for each bit of book data
+        const newBook = document.createElement('div');
+        const title = document.createElement('h2');
+        const author = document.createElement('p');
+        const pages = document.createElement('p');
+        const read = document.createElement('p');
 
-    //Add text to the elements from input data
-    title.textContent = book.title;
-    author.textContent = book.author;
-    pages.textContent = `${book.pages} pages`;
-    read.textContent = book.read;
+        //Add text to the elements from input data
+        title.textContent = book.title;
+        author.textContent = book.author;
+        pages.textContent = `${book.pages} pages`;
+        read.textContent = book.read;
 
-    //Show on page
-    newBook.appendChild(title);
-    newBook.appendChild(author);
-    newBook.appendChild(pages);
-    newBook.appendChild(read);
+        //Show on page
+        newBook.appendChild(title);
+        newBook.appendChild(author);
+        newBook.appendChild(pages);
+        newBook.appendChild(read);
 
-    bookshelf.appendChild(newBook);
+        bookshelf.appendChild(newBook);
+    });
 }
 
 //Initial books to show on page load: create and add to array
@@ -52,7 +55,7 @@ const glassHotel = new Book('The Glass Hotel', 'Emily St John Mandel', '302', 'N
 addBookToLibrary(glassHotel);
 
 //Show each book from the array on the page
-myLibrary.forEach(render);
+render(myLibrary);
 
 //Show the form on the page
 newBookButton.addEventListener('click', () => {
@@ -70,5 +73,9 @@ formSubmitButton.addEventListener('click', () => {
     //Create a new book from user input, push to array, show on page
     const book = new Book(title, author, pages, read);
     addBookToLibrary(book);
-    render(book);
+    render(myLibrary.slice(length-1));
+
+    bookForm.elements.namedItem('title').value = '';
+    bookForm.elements.namedItem('author').value = '';
+    bookForm.elements.namedItem('pages').value = '';
 });
