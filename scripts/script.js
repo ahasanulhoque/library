@@ -16,6 +16,12 @@ function Book(title, author, pages, read){
     }
 }
 
+//Function to change book object's read status
+Book.prototype.toggleReadStatus = function(){
+    if(this.read == 'Read') this.read = 'Not read';
+    else this.read = 'Read';
+}
+
 //Push a book to the myLibrary array
 function addBookToLibrary(book){
     myLibrary.push(book);
@@ -32,10 +38,16 @@ function render(library){
         const pages = document.createElement('p');
         const read = document.createElement('p');
         const removalButton = document.createElement('button');
+        const toggle = document.createElement('button');
 
-        //Add data-attribute to remove button, use it to give book div an ID
+        //Add data-attribute to both buttons, use it to give book div an ID
         removalButton.dataset.index = library.indexOf(book).toString();
+        toggle.dataset.index = removalButton.dataset.index;
         newBook.setAttribute('id', 'book-' + removalButton.dataset.index);
+
+        //Add classes to buttons
+        removalButton.setAttribute('class', 'remove-button');
+        toggle.setAttribute('class', 'toggle-button');
 
         //Add text to the elements from input data
         title.textContent = book.title;
@@ -43,6 +55,7 @@ function render(library){
         pages.textContent = `${book.pages} pages`;
         read.textContent = book.read;
         removalButton.textContent = 'Remove';
+        toggle.textContent = 'Toggle read status';
 
         //Show on page
         newBook.appendChild(title);
@@ -50,6 +63,7 @@ function render(library){
         newBook.appendChild(pages);
         newBook.appendChild(read);
         newBook.appendChild(removalButton);
+        newBook.appendChild(toggle);
 
         bookshelf.appendChild(newBook);
     });
@@ -95,12 +109,21 @@ formSubmitButton.addEventListener('click', () => {
 
 //Listen for clicks on the remove buttons
 bookshelf.onclick = function(event){
-    let removalButton = event.target;
-    if (removalButton.tagName == 'BUTTON'){
-        //Remove all books from page, delete removed book from array, and 
-        //display contents of array on page again
+    let button = event.target;
+    if (button.className == 'remove-button'){
+        //If remove button is clicked:
+        //Delete removed book from array, remove all books from DOM/page, and 
+        //display contents of array on DOM/page again
         deleteAllBooks();
-        myLibrary.splice(parseInt(removalButton.dataset.index),1);
+        myLibrary.splice(parseInt(button.dataset.index),1);
+        render(myLibrary);
+    } else if (button.className == 'toggle-button'){
+        //If toggle read status button is clicked:
+        //Call the Book prototype's toggleReadStatus() to change the selected book
+        //object's read status. Remove all books from DOM/page and display contents
+        //of array on DOM/page again
+        myLibrary[parseInt(button.dataset.index)].toggleReadStatus();
+        deleteAllBooks();
         render(myLibrary);
     }
 }
