@@ -6,6 +6,20 @@ h2 {
     font-size: 1.2rem;
 }
 
+header {
+    text-align: center;
+}
+
+#shelf-container {
+    margin: auto 3rem auto 3rem;
+    border: solid;
+    min-height: 650px;
+}
+
+#new-book {
+    text-align: center;
+}
+
 #book-form {
     display: none;
     position: fixed;
@@ -22,3 +36,9 @@ h2 {
 #bookshelf div {
     width: 200px;
 }
+
+.book-card {
+    border: solid;
+    text-align: center;
+}
+

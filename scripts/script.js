@@ -44,6 +44,7 @@ function render(library){
         removalButton.dataset.index = library.indexOf(book).toString();
         toggle.dataset.index = removalButton.dataset.index;
         newBook.setAttribute('id', 'book-' + removalButton.dataset.index);
+        newBook.setAttribute('class', 'book-card');
 
         //Add classes to buttons
         removalButton.setAttribute('class', 'remove-button');
@@ -55,7 +56,7 @@ function render(library){
         pages.textContent = `${book.pages} pages`;
         read.textContent = book.read;
         removalButton.textContent = 'Remove';
-        toggle.textContent = 'Toggle read status';
+        toggle.textContent = 'Read?';
 
         //Show on page
         newBook.appendChild(title);
