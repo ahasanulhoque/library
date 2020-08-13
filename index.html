@@ -6,10 +6,11 @@
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-    <header><h1>My Boookshelf</h1></header>
-
     <div id="shelf-container">
-        <button id="new-book">NEW BOOK</button>
+        <h1>My Boookshelf</h1>
+        <div id="new-book-wrapper">
+            <button id="new-book">NEW BOOK</button>
+        </div>
         <div id="form-wrapper">
             <form id="book-form">
                 <h3>New book details</h3>
@@ -24,10 +25,12 @@
                 <input type="text" placeholder="Enter the number of pages" name="pages" id="pages">
 
                 <p>Have you read this book yet?</p>
-                <label for="read">Yes</label>
-                <input type="radio" name="read" value="Read">
-                <label for="not-read">No</label>
-                <input type="radio" name="read" value="Not read">
+                <div id="read-answer-wrapper">
+                    <label for="read">Yes</label>
+                    <input type="radio" name="read" value="Read">
+                    <label for="not-read">No</label>
+                    <input type="radio" name="read" value="Not read">
+                </div>
 
                 <button type="button" id="submit-book">Add book</button>
             </form>

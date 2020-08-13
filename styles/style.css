@@ -1,31 +1,53 @@
 html {
     font-size: 14px;
+    background-image: url('../images/bookshelf.jpg');
+}
+
+h1 {
+    text-align: center;
 }
 
 h2 {
     font-size: 1.2rem;
 }
 
-header {
+#new-book-wrapper {
     text-align: center;
 }
 
 #shelf-container {
     margin: auto 3rem auto 3rem;
     border: solid;
-    min-height: 650px;
+    min-height: 750px;
+    padding-left: 3.5rem;
+    padding-right: 3.5rem;
+    background-color: hsla(29, 50%, 80%, 0.9);
 }
 
-#new-book {
-    text-align: center;
+#form-wrapper {
+    display: flex;
+    justify-content: center;
 }
 
 #book-form {
     display: none;
+    flex-direction: column;
+    width: 30rem;
     position: fixed;
     z-index: 1;
-    background-color: black;
+    border-radius: 2%;
+    background-color: brown;
     color: white;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-bottom: 1rem;
+}
+
+
+#submit-book {
+    width: 10rem;
+    position: relative;
+    left: 10rem;;
 }
 
 #bookshelf {
@@ -33,12 +55,25 @@ header {
     flex-wrap: wrap;
 }
 
-#bookshelf div {
-    width: 200px;
-}
-
 .book-card {
+    display: flex;
+    flex-direction: column;;
+    background-color:  #b3ffff;
     border: solid;
     text-align: center;
+    width: 11rem;
+    height: 15rem;
+    margin: 1rem 1rem auto 1rem;
 }
 
+.remove-button {
+    width: 2rem;
+    background-color: pink;
+    position: relative;
+    bottom: 13rem;
+    left: 8rem;
+}
+
+.toggle-button {
+    background:lightgreen;
+}

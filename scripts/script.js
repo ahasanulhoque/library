@@ -55,7 +55,7 @@ function render(library){
         author.textContent = book.author;
         pages.textContent = `${book.pages} pages`;
         read.textContent = book.read;
-        removalButton.textContent = 'Remove';
+        removalButton.textContent = 'X';
         toggle.textContent = 'Read?';
 
         //Show on page
@@ -83,7 +83,7 @@ render(myLibrary);
 
 //Show the form on the page
 newBookButton.addEventListener('click', () => {
-    bookForm.style.display = 'block';
+    bookForm.style.display = 'flex';
 });
 
 //Hide the form and take in the user input values
