@@ -39,6 +39,7 @@ function render(library){
         const read = document.createElement('p');
         const removalButton = document.createElement('button');
         const toggle = document.createElement('button');
+        const buttonWrapper = document.createElement('div');
 
         //Add data-attribute to both buttons, use it to give book div an ID
         removalButton.dataset.index = library.indexOf(book).toString();
@@ -49,6 +50,7 @@ function render(library){
         //Add classes to buttons
         removalButton.setAttribute('class', 'remove-button');
         toggle.setAttribute('class', 'toggle-button');
+        buttonWrapper.setAttribute('class', 'button-wrapper');
 
         //Add text to the elements from input data
         title.textContent = book.title;
@@ -63,8 +65,9 @@ function render(library){
         newBook.appendChild(author);
         newBook.appendChild(pages);
         newBook.appendChild(read);
-        newBook.appendChild(removalButton);
-        newBook.appendChild(toggle);
+        buttonWrapper.appendChild(toggle);
+        buttonWrapper.appendChild(removalButton);
+        newBook.appendChild(buttonWrapper);
 
         bookshelf.appendChild(newBook);
     });
