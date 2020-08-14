@@ -95,7 +95,7 @@ button {
     width: 2rem;
     background-color: pink;   
     position: absolute;
-    right: 1px;
+    right: 0px;
 }
 
 .toggle-button {
