@@ -73,17 +73,6 @@ function render(library){
     });
 }
 
-//Initial books to show on page load: create and add to array
-const marsRoom = new Book('The Mars Room', 'Rachel Kushner', '338', 'Read');
-addBookToLibrary(marsRoom);
-const iliad = new Book('The Iliad', 'Homer', '683', 'Read');
-addBookToLibrary(iliad);
-const glassHotel = new Book('The Glass Hotel', 'Emily St John Mandel', '302', 'Not read');
-addBookToLibrary(glassHotel);
-
-//Show each book from the array on the page
-render(myLibrary);
-
 //Show the form on the page
 newBookButton.addEventListener('click', () => {
     bookForm.style.display = 'flex';
@@ -146,3 +135,19 @@ function deleteAllBooks() {
         bookshelf.removeChild(book);
     }
 }
+
+//Initialize the page with pre-selected books in the myLibrary array
+function initializePage() {
+    //Initial books to show on page load: create and add to array
+    const marsRoom = new Book('The Mars Room', 'Rachel Kushner', '338', 'Read');
+    addBookToLibrary(marsRoom);
+    const iliad = new Book('The Iliad', 'Homer', '683', 'Read');
+    addBookToLibrary(iliad);
+    const glassHotel = new Book('The Glass Hotel', 'Emily St John Mandel', '302', 'Not read');
+    addBookToLibrary(glassHotel);
+
+    //Show each book from the array on the page
+    render(myLibrary);
+}
+
+initializePage();
