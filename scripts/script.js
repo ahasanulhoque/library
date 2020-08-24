@@ -5,21 +5,24 @@ const formSubmitButton = document.querySelector('#submit-book');
 
 let myLibrary = [];
 
-//Book constructor
-function Book(title, author, pages, read){
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-    this.info = function(){
+//Book class
+class Book{
+    constructor(title, author, pages, read){
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+    }
+    
+    info(){
         return `${title} by ${author}, ${pages} pages, ${read}`;
     }
-}
 
-//Function to change book object's read status
-Book.prototype.toggleReadStatus = function(){
-    if(this.read == 'Read') this.read = 'Not read';
-    else this.read = 'Read';
+    //Function to change book object's read status
+    toggleReadStatus() {
+        if(this.read == 'Read') this.read = 'Not read';
+        else this.read = 'Read';
+    }
 }
 
 //Push a book to the myLibrary array
